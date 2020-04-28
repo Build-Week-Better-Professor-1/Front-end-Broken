@@ -1,15 +1,15 @@
 import React from 'react';
-import { Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
 import './App.css';
 import LoginPage from "./components /LoginPage";
-import StudentList from "./components /StudentList";
+import AddStudentComponent from "./components /AddStudentComponent";
 import RegisterPage from "./components /RegisterPage";
-import history from "./components /history";
+// import history from "./components /history";
 
 function App() {
   return (
     <div className="App">
-      <Router history={history}>
+      <Router>
 
         <div style={{textAlign: 'center'}}>
           <ul>
@@ -22,12 +22,12 @@ function App() {
               <Link to="/register">Register</Link>
             </li>
             <li>
-              <Link to="/student-list">Student List</Link>
+              <Link to="/student-add">Add student</Link>
             </li>
           </ul>
 
           <Switch>
-            <Route exact path="/student-list" component={StudentList} />
+            <Route exact path="/student-add" component={AddStudentComponent} />
             <Route exact path="/" component={LoginPage}/>
             <Route exact path="/register" component={RegisterPage}/>
             <Route component={LoginPage} />
