@@ -1,27 +1,35 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import LoginButton1 from '../components/Buttons/LoginButton1';
+import styled from 'styled-components';
+
+const LoginDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+`;
 
 function Login () {
     return (
-        <div>
+        <LoginDiv>
             <h2>Log In</h2>
             <form>
-                <label>Email:<br />
+                <label>Email<br />
                     <input
                     placeholder='Enter Email Address'
                     name='email'  
                     type='text' />
                 </label><br />
-                <label>Password:<br />
+                <label>Password<br />
                     <input
                     placeholder='Create a password' 
                     name='password'
                     type='password' />
                 </label><br />
-                <button>Log In</button>
+                <LoginButton1 />
                 </form>
-                <p>Don't gave an account? <Link to='/SignUp'>Create one here</Link></p>
-        </div>
+                <p>Don't have an account? <Link to='/SignUp'>Create one here</Link></p>
+        </LoginDiv>
     )
 }
 

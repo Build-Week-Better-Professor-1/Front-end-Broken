@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import phone from '../img/bpa-phone.jpg';
+import SignUpButton from './Buttons/SignUpButton';
+import LoginButton from './Buttons/LogInButton';
 
 const Section = styled.section`
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
@@ -73,8 +75,8 @@ function Home () {
                 a myriad of students can be a hassle for even the most
                 organized teacher. Streamline the process now with Better Professor.</p>
             </div>
-            <Link to='/SignUp'><button className='signup-btn'>Sign Up</button></Link>
-            <Link to='/Login'><button className='login-btn'>Log In</button></Link>
+            <Link to='/SignUp'><SignUpButton /></Link>
+            <Link to='/Login'><LoginButton /></Link>
             </div>
         </Section>
     )
