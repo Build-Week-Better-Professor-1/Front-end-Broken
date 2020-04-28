@@ -7,26 +7,57 @@ const LoginDiv = styled.div`
     display: flex;
     flex-direction: column;
     text-align: center;
+    .errors{
+        color: red;
+    }
 `;
 
-function Login () {
+const StyledInput = styled.input`
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid black;
+    text-align: center;
+    margin: 1% 0%;
+`;
+
+function Login (props) {
+
+    const {
+        values,
+        onInputChange,
+        onSubmit,
+        disabled,
+        errors,
+    } = props
+
     return (
         <LoginDiv>
             <h2>Log In</h2>
             <form>
+                {/* Errors */}
+                <div className='errors'>
+                    
+                    
+                </div>
+                {/* Inputs */}<div className='errors'>{errors.email}</div>
                 <label>Email<br />
-                    <input
+                    <StyledInput
+                    value={values.email}
+                    onChange={onInputChange}
                     placeholder='Enter Email Address'
                     name='email'  
                     type='text' />
                 </label><br />
-                <label>Password<br />
-                    <input
-                    placeholder='Create a password' 
+                <label>Password<br /><div className='errors'>{errors.password}</div>
+                    <StyledInput
+                    value={values.password}
+                    onChange={onInputChange}
+                    placeholder='Enter a password' 
                     name='password'
                     type='password' />
                 </label><br />
-                <LoginButton1 />
+                {/* Login Submit button */}
+                <LoginButton1 onClick={onSubmit} disabled={disabled} />
                 </form>
                 <p>Don't have an account? <Link to='/SignUp'>Create one here</Link></p>
         </LoginDiv>
