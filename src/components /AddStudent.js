@@ -1,5 +1,7 @@
 import React, {useState} from "react";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
+import {StyledForm} from "./RegisterForm";
+
 
 function AddStudent() {
     const [newStudent, setNewStudent] = useState({
@@ -26,8 +28,9 @@ function AddStudent() {
 
     return (
         <div>
-            <form onSubmit={onSubmitHandler} >
+            <StyledForm onSubmit={onSubmitHandler} >
                 <div>
+                    <label htmlFor="name">Name:</label>
                     <input
                         type='text'
                         name='name'
@@ -37,6 +40,7 @@ function AddStudent() {
                     />
                 </div>
                 <div>
+                    <label htmlFor="name">Email:</label>
                     <input
                         type='email'
                         name='email'
@@ -45,7 +49,7 @@ function AddStudent() {
                     />
                 </div>
                 <button>Submit</button>
-            </form>
+            </StyledForm>
         </div>
     );
 }

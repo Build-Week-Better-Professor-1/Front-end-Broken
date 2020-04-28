@@ -4,6 +4,7 @@ import './App.css';
 import LoginPage from "./components /LoginPage";
 import AddStudentComponent from "./components /AddStudentComponent";
 import RegisterPage from "./components /RegisterPage";
+import StudentList from "./components /StudentList";
 // import history from "./components /history";
 
 function App() {
@@ -24,12 +25,16 @@ function App() {
             <li>
               <Link to="/student-add">Add student</Link>
             </li>
+            <li>
+              <Link to="/student-list">Student List</Link>
+            </li>
           </ul>
 
           <Switch>
             <Route exact path="/student-add" component={AddStudentComponent} />
             <Route exact path="/" component={LoginPage}/>
             <Route exact path="/register" component={RegisterPage}/>
+            <Route exact path="/student-list" component={StudentList}/>
             <Route component={LoginPage} />
 
           </Switch>
