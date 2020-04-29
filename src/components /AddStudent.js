@@ -29,10 +29,11 @@ function AddStudent() {
 
     return (
         <div>
-            <StyledForm onSubmit={onSubmitHandler} >
+            <StyledForm autocomplete="off" onSubmit={onSubmitHandler} >
                 <div>
                     <label htmlFor="name">Name:</label>
                     <input
+                        autocomplete="off"
                         type='text'
                         name='name'
                         required
@@ -43,6 +44,7 @@ function AddStudent() {
                 <div>
                     <label htmlFor="name">Email:</label>
                     <input
+                        autocomplete="off"
                         type='email'
                         name='email'
                         value={newStudent.email}

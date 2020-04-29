@@ -50,11 +50,12 @@ const LoginForm = (props) => {
 
     return(
         <div>
-            <StyledForm>
-            <form onSubmit={login}>
+
+            <StyledForm onSubmit={login}>
                 <label htmlFor="name">Name:</label>
                 <input
                     type= 'text'
+                    autocomplete="nope"
                     value={input.email}
                     name='email'
                     placeholder='...enter username'
@@ -62,6 +63,7 @@ const LoginForm = (props) => {
                 />
                 <label htmlFor="name">Password</label>
                 <input
+                    autocomplete="new-password"
                     type='password'
                     value={input.password}
                     name='password'
@@ -73,7 +75,6 @@ const LoginForm = (props) => {
                 <div className="create-acct">
                     <Link className="acct-link" to="/register">Create an Account</Link>
                 </div>
-            </form>
             </StyledForm>
         </div>
     )

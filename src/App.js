@@ -15,6 +15,8 @@ function App() {
     localStorage.removeItem('token');
     window.location.href = '/'
   }
+
+
   return (
     <div className="App">
       <Router>
@@ -36,6 +38,7 @@ function App() {
               <Link to="/student-list">Student List</Link>
             </li>
             <button onClick={logOut}>Log Out</button>
+
           </ul>
 
           <Switch>

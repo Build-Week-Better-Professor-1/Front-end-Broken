@@ -3,7 +3,8 @@ import AddStudent from "./AddStudent";
 function AddStudentComponent() {
     return(
         <div>
-            Student List
+            <h1>Add a new student</h1>
+            <br/>
             <AddStudent/>
         </div>
     )

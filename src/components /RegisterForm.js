@@ -16,14 +16,16 @@ display: flex;
 flex-direction: column;
 justify-content: space-evenly;
 border-radius:25px;
+ 
 input {
     margin-bottom: 28px;
     padding: 0.5rem;
     font-size: 16px;
     width: 96%;
     display: block;
-    color: #223F68;
+    color: white;
     border-radius:3px;
+   
 }
 label {
     display: flex;
@@ -76,31 +78,34 @@ const RegisterForm = () => {
     }
 
     return (
-        <StyledForm onSubmit={submitForm}>
+        <StyledForm  autocomplete="off" onSubmit={submitForm}>
             <label htmlFor="name">Username</label>
             <input
+                autocomplete="off"
                 name="name"
                 id="name"
                 type="text"
-                placeholder="name..."
+                placeholder="Name"
                 onChange={changeHandler}
                 value={formData.name}
-                required/>
+                required />
             <label htmlFor="email">Email</label>
             <input
+                autocomplete="off"
                 name="email"
                 id="email"
                 type="text"
-                placeholder="email"
+                placeholder="Email"
                 onChange={changeHandler}
                 value={formData.email}
                 required/>
             <label htmlFor="password">Password</label>
             <input
+                autocomplete="off"
                 name="password"
                 id="password"
                 type="password"
-                placeholder="new password..."
+                placeholder="Password"
                 onChange={changeHandler}
                 value={formData.password}
                 required/>

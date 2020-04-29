@@ -1,8 +1,11 @@
 *{
   list-style: none;
   text-decoration: none;
-  color: dimgrey;
-  background-color: lightcyan;
+  color: white;
+  /*background-color: lightgray;*/
+  background-image: url("https://images.unsplash.com/photo-1439792675105-701e6a4ab6f0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1652&q=80");
+  opacity: 0.96;
+
 }
 li{
   text-decoration: none;
@@ -20,4 +23,19 @@ li{
 }
 .links{
   text-decoration: none;
+}
+.student_list{
+  width: 100%;
+  padding-top: 20px;
+ text-align: center;
+  font-weight: bolder;
+}
+.student_list span{
+  color:red;
+}
+.edit_delete{
+  width: 100px;
+  height: 25px;
+  margin-top: 15px;
+  margin-left: 15px;
 }

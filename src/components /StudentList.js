@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
-
+import '../App.css'
 
 function StudentList(props) {
     const[student,setStudent] = useState([])
@@ -29,15 +29,16 @@ function StudentList(props) {
     }
 
     return(
-        <div>Student List
+        <div>
+            <h1>Student List</h1><br/>
             {student.map(item => {
                 return (
-                    <div>
+                    <div className="student_list">
                         <li>
-                            {item.name} {item.email}
+                           <span>Name:</span> {item.name} 	&nbsp;	&nbsp; <span>Email:</span> {item.email}
                         </li>
-                        <button onClick={() => onClickEditHandler(item)}>edit</button>
-                        <button onClick={ev => onClickDeleteHandler(ev, item)} >delete</button>
+                        <button className="edit_delete" onClick={() => onClickEditHandler(item)}>Edit</button>
+                        <button  className="edit_delete" onClick={ev => onClickDeleteHandler(ev, item)} >Delete</button>
 
                     </div>
                 );
