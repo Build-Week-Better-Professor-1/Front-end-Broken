@@ -14,8 +14,8 @@ import { Route, Link, Switch } from 'react-router-dom';
 // uuid
 // import { v4 as uuid } from 'uuid';
 // axios and yup
-import axios from 'axios'
-import * as yup from 'yup'
+import axios from 'axios';
+import * as yup from 'yup';
 
 // URL for simulating POST requests
 const url = 'https://reqres.in/api/users'
