@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
-import {useParams} from "react-router";
+import {useParams} from "react-router-dom";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
+import {StyledForm} from "./RegisterForm";
 
 function UpdateStudent(props) {
 
@@ -15,14 +16,52 @@ function UpdateStudent(props) {
         axiosWithAuth()
             .get(`/api/students/${id}`)
             .then(res => {
-                console.log(res);
+                console.log(res.data.student);
+                setItem(res.data.student)
             })
             .catch(err => console.log(err))
-    })
+    }, [])
+
+    const onChangeHandler = e => {
+        const {name, value} = e.target;
+        setItem({...item, [name]: value});
+    }
+
+    const onSubmitHandler = e => {
+        e.preventDefault();
+
+        axiosWithAuth()
+            .put(`/api/students/${id}`, item)
+            .then(res => {
+                // console.log(res)
+                window.location.href="/student-list"
+            })
+            .catch(err => console.log(err))
+    }
 
     return(
         <div>
-            boo
+            <StyledForm onSubmit={onSubmitHandler}>
+                <div>
+                    <label htmlFor="name">Name:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        value={item.name}
+                        onChange={onChangeHandler}
+                    />
+                </div>
+                <div>
+                    <label htmlFor="name">Email:</label>
+                    <input
+                        type="email"
+                        name="email"
+                        value={item.email}
+                        onChange={onChangeHandler}
+                    />
+                </div>
+                <button>Update</button>
+            </StyledForm>
         </div>
     );
 }

@@ -1,7 +1,23 @@
 *{
   list-style: none;
+  text-decoration: none;
+  color: dimgrey;
+  background-color: lightcyan;
+}
+li{
+  text-decoration: none;
 }
 
 .App {
   text-align: center;
+}
+.forma_links ul {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+  margin-bottom: 50px;
+
+}
+.links{
+  text-decoration: none;
 }

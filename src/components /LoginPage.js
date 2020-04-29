@@ -4,7 +4,7 @@ import LoginForm from "./LoginForm";
 function LoginPage() {
     return(
         <div>
-            Login Page
+            <h1>Welcome, Please login </h1>
             <LoginForm/>
         </div>
     )

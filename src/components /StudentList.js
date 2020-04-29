@@ -3,7 +3,6 @@ import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 
 function StudentList(props) {
-
     const[student,setStudent] = useState([])
 
     useEffect(() => {
@@ -17,8 +16,7 @@ function StudentList(props) {
     },[])
 
     const onClickEditHandler = (item) => {
-        window.location.href=`/student-list/${item.id}`
-
+        window.location.href=`/update-student/${item.id}`
     }
 
     const onClickDeleteHandler = (ev, item) => {

@@ -10,12 +10,12 @@ height: 70vh;
 margin: auto 300px;
 padding: 32px;
 font-weight: bold;
-background-color: #F8F9F7;
 color: #223F68;
 box-shadow: 0 0 10px 5px lightgray;
 display: flex;
 flex-direction: column;
 justify-content: space-evenly;
+border-radius:25px;
 input {
     margin-bottom: 28px;
     padding: 0.5rem;
@@ -23,6 +23,7 @@ input {
     width: 96%;
     display: block;
     color: #223F68;
+    border-radius:3px;
 }
 label {
     display: flex;
@@ -46,6 +47,10 @@ button {
   -webkit-appearance: none;
   display: flex;
   align-self: center;
+  text-align:center;
+  color:white;
+    align-items: center;
+    justify-content: center;
 }
 `;
 const RegisterForm = () => {

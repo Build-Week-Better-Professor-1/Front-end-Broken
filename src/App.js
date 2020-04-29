@@ -5,15 +5,22 @@ import LoginPage from "./components /LoginPage";
 import AddStudentComponent from "./components /AddStudentComponent";
 import RegisterPage from "./components /RegisterPage";
 import StudentList from "./components /StudentList";
-// import history from "./components /history";
+import UpdateStudent from "./components /UpdateStudent";
+import PrivateRoute from "./components /PrivateRoute";
 
 function App() {
+
+  const logOut = e => {
+    e.preventDefault()
+    localStorage.removeItem('token');
+    window.location.href = '/'
+  }
   return (
     <div className="App">
       <Router>
 
-        <div style={{textAlign: 'center'}}>
-          <ul>
+        <div  className="forma_links" style={{textAlign: 'center'}}>
+          <ul className="links">
 
             <li>
               <Link to="/login">Login</Link>
@@ -28,13 +35,16 @@ function App() {
             <li>
               <Link to="/student-list">Student List</Link>
             </li>
+            <button onClick={logOut}>Log Out</button>
           </ul>
 
           <Switch>
-            <Route exact path="/student-add" component={AddStudentComponent} />
+            <PrivateRoute exact path="/student-add" component={AddStudentComponent} />
             <Route exact path="/" component={LoginPage}/>
             <Route exact path="/register" component={RegisterPage}/>
-            <Route exact path="/student-list" component={StudentList}/>
+            <PrivateRoute exact path="/student-list" component={StudentList}/>
+            <PrivateRoute path="/update-student/:id" component={UpdateStudent}/>
+
             <Route component={LoginPage} />
 
           </Switch>
