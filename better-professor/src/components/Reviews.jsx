@@ -1,35 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+import { ReviewsDiv, ReviewsH2 } from './styles';
 import FiveStars from '../img/5stars.png';
 
-const ReviewsDiv = styled.div`
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    h3, p {
-        font-family: 'Roboto Slab', serif;
-    }
-
-    h2 {
-        font-family: 'Roboto Slab', serif;
-        text-align: center;
-    }
-    .review {
-        display: flex;
-        flex-direction: column;
-        max-height: 10%;
-        width: 45%; 
-        margin: 2% 2%;
-    }
-    
-`;
 
 function Reviews () {
     return (
+        <div>
+    <ReviewsH2>See what customers are saying about Better Professor!</ReviewsH2> 
         <ReviewsDiv>
-            <h2>See what customers are saying about Better Professor!</h2> 
+            
                 <div className='review'>
                     <h3>Deborah S.<img height='50px' width='300px' src={FiveStars} alt='five blue stars' /></h3>
                     <p>January 29, 2020</p>
@@ -66,6 +45,7 @@ function Reviews () {
                     <p>Es una muy buena applicacion.</p>  
                 </div>
         </ReviewsDiv>
+        </div>
     )
 }
 
