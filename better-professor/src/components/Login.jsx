@@ -1,67 +1,114 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import LoginButton1 from '../components/Buttons/LoginButton1';
-import styled from 'styled-components';
+import axios from 'axios';
+import * as yup from 'yup';
+import {Redirect} from "react-router";
+import { LoginForm, StyledInput, SmallBlueButton } from './styles';
 
-const LoginDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    .errors{
-        color: red;
+const Login= (props) => {
+
+    const [formData, setFormData] = useState({
+        email:'',
+        password:''
+    })
+
+    const [formErrors, setFormErrors] = useState({
+        email: '',
+        password: '',
+    })
+
+    const [formDisabled, setFormDisabled] = useState(true)
+
+    const formSchema = yup.object().shape({
+        email: yup 
+        .string()
+        .email('valid email is required')
+        .required('email is required'),
+        password: yup
+        .string()
+        .min(5, 'at least 5 characters required for password')
+        .required('password is required'),
+      })
+
+      useEffect(() => {
+        formSchema.isValid(formData).then(valid => {
+          setFormDisabled(!valid)
+        })
+      }, [formData])
+
+    const handleChange = (evt) => {
+
+        const name = evt.target.name
+        const value = evt.target.value
+
+        yup
+        .reach(formSchema, name)
+        .validate(value)
+        .then(valid => {
+          setFormErrors({
+            ...formErrors,
+            [name]: '',
+          })
+        })
+        .catch(err => {
+          setFormErrors({
+            ...formErrors,
+            [name]: err.errors[0]
+          })
+        })
+    setFormData({
+        ...formData,
+        [name]: value,
+    })
+}
+
+    const switchRoute = () => {
+        return  <Redirect to="/dashboard" />
     }
-`;
 
-const StyledInput = styled.input`
-    height: 32px;
-    border-radius: 8px;
-    border: 1px solid black;
-    text-align: center;
-    margin: 1% 0%;
-`;
+    const login = (event) => {
+        event.preventDefault();
+        axios
+            .post('https://betterprofessorapp.herokuapp.com/api/auth/login', formData)
+            .then(res => {
+                console.log(res);
+                localStorage.setItem('token', res.data.token);
+                localStorage.setItem('name', res.data.name);
+                console.log(props.history);
+                window.location.href = '/dashboard'
+                switchRoute();
+            })
+            .catch(err => console.log(err))
+    }
 
-function Login (props) {
-
-    const {
-        values,
-        onInputChange,
-        onSubmit,
-        disabled,
-        errors,
-    } = props
-
-    return (
-        <LoginDiv>
-            <h2>Log In</h2>
-            <form>
-                {/* Errors */}
-                <div className='errors'>
-                    
-                    
-                </div>
-                {/* Inputs */}<div className='errors'>{errors.email}</div>
-                <label>Email<br />
-                    <StyledInput
-                    value={values.email}
-                    onChange={onInputChange}
-                    placeholder='Enter Email Address'
-                    name='email'  
-                    type='text' />
-                </label><br />
-                <label>Password<br /><div className='errors'>{errors.password}</div>
-                    <StyledInput
-                    value={values.password}
-                    onChange={onInputChange}
-                    placeholder='Enter a password' 
+    return(
+        <div>
+            
+            <LoginForm onSubmit={login}>
+                <h2>Log In</h2>
+                <label htmlFor="name">Email</label><div className='errors'>{formErrors.email}</div>
+                <StyledInput
+                    value={formData.email}
+                    name='email'
+                    placeholder='Email'
+                    onChange={handleChange}
+                />
+                <label htmlFor="name">Password</label><div className='errors'>{formErrors.password}</div>
+                <StyledInput
+                    type='password'
+                    value={formData.password}
                     name='password'
-                    type='password' />
-                </label><br />
-                {/* Login Submit button */}
-                <LoginButton1 onClick={onSubmit} disabled={disabled} />
-                </form>
-                <p>Don't have an account? <Link to='/SignUp'>Create one here</Link></p>
-        </LoginDiv>
+                    placeholder='Password'
+                    onChange={handleChange}
+                />
+                <SmallBlueButton>Log In</SmallBlueButton>
+
+                <div className="create-acct">
+                    <Link to="/SignUp">Create an Account</Link>
+                </div>
+            </LoginForm>
+        </div>
     )
 }
 
-export default Login;
+export default Login

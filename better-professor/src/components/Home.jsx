@@ -1,68 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Section } from './styles';
 import phone from '../img/bpa-phone.jpg';
-import SignUpButton from './Buttons/SignUpButton';
-import LoginButton from './Buttons/LogInButton';
-
-const Section = styled.section`
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&display=swap');
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: center;
-  padding: 4%;
-
-  h1, h2, p {
-    font-family: 'Roboto Slab', serif;
-  }
-
-  h2 {
-    font-size: 3.5rem;
-    margin: 1% 1%;
-  }
-
-  p {
-    font-size: 1.5rem;
-    margin: 0% 1%;
-  }
-
-  .homepage-pitch{
-	display:flex;
-	flex-direction:column;
-    justify-content:flex-start;
-    padding: 0 2%;
-    width: 80%;
-  }
-
-  .signup-btn{
-    width: 60%;
-    background-color: #2196F3;
-    border: 1px solid white;
-    border-radius: 8px;
-    color: white;
-    margin: 5%;
-    padding: 3%;
-    cursor: pointer;
-    font-family: 'Roboto Slab', serif;
-  }
-
-  .login-btn{
-    background-color: white;
-    border: 1px solid #2196F3;
-    border-radius: 8px;
-    color: #2196F3;
-    width: 60%;
-    margin: 5%;
-    padding: 3%;
-    cursor: pointer;
-    font-family: 'Roboto Slab', serif;
-  }
-
-  .app-img{
-    width: 50%;
-    height: 50%;
-  }
-`;
+import { BigBlueButton, BigWhiteButton } from './styles';
 
 function Home () {
     return (
@@ -75,8 +15,8 @@ function Home () {
                 a myriad of students can be a hassle for even the most
                 organized teacher. Streamline the process now with Better Professor.</p>
             </div>
-            <Link to='/SignUp'><SignUpButton /></Link>
-            <Link to='/Login'><LoginButton /></Link>
+            <Link to='/SignUp'><BigBlueButton>Sign Up</BigBlueButton></Link>
+            <Link to='/Login'><BigWhiteButton>Log In</BigWhiteButton></Link>
             </div>
         </Section>
     )
